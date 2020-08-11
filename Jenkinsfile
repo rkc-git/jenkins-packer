@@ -12,9 +12,9 @@ ansiColor('xterm') {
             sh "ansible-playbook jenkins.yml --syntax-check"
         }
         stage('Build') {
-            withCredentials([usernamePassword(credentialsId: 'AWS_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY', passwordVariable: 'AWS_SECRET_KEY')]) {
+            withCredentials([usernamePassword(credentialsId: 'aws_access_keys', usernameVariable: 'AWS_ACCESS_KEY', passwordVariable: 'AWS_SECRET_KEY')]) {
             // Run the packer build
-                sh "packer build -var aws_access_key=${AWS_ACCESS_KEY} -var aws_secret_key=${AWS_SECRET_KEY} -var region=${AWS_REGION} jenkins.json"
+                sh "packer build -var 'aws_region=us-west-2' jenkins.json"
             }
         }
         stage('Store Artifacts') {
