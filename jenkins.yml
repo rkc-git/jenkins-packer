@@ -1,6 +1,6 @@
 ---
 - name: Install Jenkins 
-  hosts: all
+  hosts: localhost
   become: yes
   vars:
     ssh_use_pam: true # to allow access with our key on ec2
