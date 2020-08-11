@@ -14,7 +14,7 @@ ansiColor('xterm') {
         stage('Build') {
             withCredentials([usernamePassword(credentialsId: 'aws_access_keys', usernameVariable: 'AWS_ACCESS_KEY', passwordVariable: 'AWS_SECRET_KEY')]) {
             // Run the packer build
-                sh "packer build -var 'aws_region=us-west-2' jenkins.json"
+                sh "packer build jenkins.json"
             }
         }
     }
