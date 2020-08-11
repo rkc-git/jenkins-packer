@@ -17,8 +17,5 @@ ansiColor('xterm') {
                 sh "packer build -var 'aws_region=us-west-2' jenkins.json"
             }
         }
-        stage('Store Artifacts') {
-            archiveArtifacts 'manifest.json'
-        }
     }
 }
