@@ -12,14 +12,14 @@
     "source_ami_filter": {
       "filters": {
       "virtualization-type": "hvm",
-      "name": "hardened-base-*",
+      "name": "centos8.2-ami-packer*",
       "root-device-type": "ebs"
       },
       "owners": ["self"],
       "most_recent": true
     },
     "instance_type": "t2.micro",
-    "ssh_username": "ubuntu",
+    "ssh_username": "centos",
     "ami_name": "jenkins-server-{{timestamp}}"
   }],
   "provisioners": [{
@@ -28,8 +28,7 @@
     },
     {
     "type": "ansible",
-    "playbook_file": "jenkins.yml",
-    "extra_arguments": ["--extra-vars", "ansible_python_interpreter=/usr/bin/python3"]
+    "playbook_file": "jenkins.yml"
   }],
   "post-processors": [{
       "output": "manifest.json",
